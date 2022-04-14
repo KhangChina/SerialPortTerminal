@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "b3458e74-cceb-431d-b0c4-3d34c8aa131c": {
+      "ProjectGuid": "b3458e74-cceb-431d-b0c4-3d34c8aa131c",
+      "DisplayName": "ReadDataSerialPort",
+      "ColorIndex": 0
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 1
+}

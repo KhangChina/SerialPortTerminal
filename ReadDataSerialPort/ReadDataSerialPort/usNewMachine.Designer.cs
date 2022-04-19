@@ -32,13 +32,11 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
-            this.mmHex = new DevExpress.XtraEditors.MemoEdit();
             this.mmReceived = new DevExpress.XtraEditors.MemoEdit();
             this.mmConfig = new DevExpress.XtraEditors.MemoEdit();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem16 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.btnLoadCom = new DevExpress.XtraEditors.SimpleButton();
@@ -67,23 +65,17 @@
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.mmByte = new DevExpress.XtraEditors.MemoEdit();
-            this.layoutControlItem17 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.mmByteToString = new DevExpress.XtraEditors.MemoEdit();
-            this.layoutControlItem18 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
             this.layoutControl3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.mmHex.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmReceived.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmConfig.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -110,10 +102,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mmByte.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mmByteToString.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -139,9 +127,6 @@
             // 
             // layoutControl3
             // 
-            this.layoutControl3.Controls.Add(this.mmByteToString);
-            this.layoutControl3.Controls.Add(this.mmByte);
-            this.layoutControl3.Controls.Add(this.mmHex);
             this.layoutControl3.Controls.Add(this.mmReceived);
             this.layoutControl3.Controls.Add(this.mmConfig);
             this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -152,19 +137,11 @@
             this.layoutControl3.TabIndex = 0;
             this.layoutControl3.Text = "layoutControl3";
             // 
-            // mmHex
-            // 
-            this.mmHex.Location = new System.Drawing.Point(387, 18);
-            this.mmHex.Name = "mmHex";
-            this.mmHex.Size = new System.Drawing.Size(203, 314);
-            this.mmHex.StyleController = this.layoutControl3;
-            this.mmHex.TabIndex = 6;
-            // 
             // mmReceived
             // 
             this.mmReceived.Location = new System.Drawing.Point(188, 18);
             this.mmReceived.Name = "mmReceived";
-            this.mmReceived.Size = new System.Drawing.Size(195, 314);
+            this.mmReceived.Size = new System.Drawing.Size(607, 314);
             this.mmReceived.StyleController = this.layoutControl3;
             this.mmReceived.TabIndex = 5;
             // 
@@ -182,10 +159,7 @@
             this.layoutControlGroup2.GroupBordersVisible = false;
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem14,
-            this.layoutControlItem15,
-            this.layoutControlItem16,
-            this.layoutControlItem17,
-            this.layoutControlItem18});
+            this.layoutControlItem15});
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 0);
             this.layoutControlGroup2.Size = new System.Drawing.Size(797, 334);
@@ -206,20 +180,10 @@
             this.layoutControlItem15.Control = this.mmReceived;
             this.layoutControlItem15.Location = new System.Drawing.Point(186, 0);
             this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(199, 334);
+            this.layoutControlItem15.Size = new System.Drawing.Size(611, 334);
             this.layoutControlItem15.Text = "Data Received ReadExisting";
             this.layoutControlItem15.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem15.TextSize = new System.Drawing.Size(135, 13);
-            // 
-            // layoutControlItem16
-            // 
-            this.layoutControlItem16.Control = this.mmHex;
-            this.layoutControlItem16.Location = new System.Drawing.Point(385, 0);
-            this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(207, 334);
-            this.layoutControlItem16.Text = "Data Hex";
-            this.layoutControlItem16.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem16.TextSize = new System.Drawing.Size(135, 13);
             // 
             // groupControl1
             // 
@@ -519,42 +483,6 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // mmByte
-            // 
-            this.mmByte.Location = new System.Drawing.Point(594, 18);
-            this.mmByte.Name = "mmByte";
-            this.mmByte.Size = new System.Drawing.Size(201, 140);
-            this.mmByte.StyleController = this.layoutControl3;
-            this.mmByte.TabIndex = 7;
-            // 
-            // layoutControlItem17
-            // 
-            this.layoutControlItem17.Control = this.mmByte;
-            this.layoutControlItem17.Location = new System.Drawing.Point(592, 0);
-            this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(205, 160);
-            this.layoutControlItem17.Text = "Data Byte []";
-            this.layoutControlItem17.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem17.TextSize = new System.Drawing.Size(135, 13);
-            // 
-            // mmByteToString
-            // 
-            this.mmByteToString.Location = new System.Drawing.Point(594, 178);
-            this.mmByteToString.Name = "mmByteToString";
-            this.mmByteToString.Size = new System.Drawing.Size(201, 154);
-            this.mmByteToString.StyleController = this.layoutControl3;
-            this.mmByteToString.TabIndex = 8;
-            // 
-            // layoutControlItem18
-            // 
-            this.layoutControlItem18.Control = this.mmByteToString;
-            this.layoutControlItem18.Location = new System.Drawing.Point(592, 160);
-            this.layoutControlItem18.Name = "layoutControlItem18";
-            this.layoutControlItem18.Size = new System.Drawing.Size(205, 174);
-            this.layoutControlItem18.Text = "Byte [] => String";
-            this.layoutControlItem18.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutControlItem18.TextSize = new System.Drawing.Size(135, 13);
-            // 
             // usNewMachine
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -568,13 +496,11 @@
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
             this.layoutControl3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.mmHex.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmReceived.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mmConfig.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
@@ -601,10 +527,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mmByte.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem17)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.mmByteToString.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem18)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -647,11 +569,5 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
-        private DevExpress.XtraEditors.MemoEdit mmHex;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem16;
-        private DevExpress.XtraEditors.MemoEdit mmByte;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem17;
-        private DevExpress.XtraEditors.MemoEdit mmByteToString;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem18;
     }
 }

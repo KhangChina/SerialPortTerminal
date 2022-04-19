@@ -859,14 +859,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReadDataSerialPort.exe" size="171944">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ReadDataSerialPort.exe" size="170920">
       <assemblyIdentity name="ReadDataSerialPort" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>SO8e2pF7T4h7S05o3o73drZF/Km8vVWzAQYK5enaabM=</dsig:DigestValue>
+        <dsig:DigestValue>W7vTTFBcwk9tFKS2CQnmKqp/E1wdwypDle7IISlk9HQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

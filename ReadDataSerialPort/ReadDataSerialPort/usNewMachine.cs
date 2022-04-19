@@ -1,8 +1,10 @@
 ﻿using DevExpress.XtraEditors;
 using System;
-using System.IO.Ports;
-using System.Windows.Forms;
+using System.Collections.Generic;
 using System.IO;
+using System.IO.Ports;
+using System.Text;
+using System.Windows.Forms;
 
 namespace ReadDataSerialPort
 {
@@ -134,7 +136,11 @@ namespace ReadDataSerialPort
 
             }
             mySerialPort.RtsEnable = bool.Parse(cbxRtsEnable.Text);
-
+            mySerialPort.DiscardNull = false;
+            //mySerialPort.DtrEnable = true;
+            mySerialPort.DataBits = DataBits;
+            mySerialPort.BaudRate = BaudRate;
+           // mySerialPort.Encoding = System.Text.Encoding.GetEncoding(1252);
             XtraMessageBoxArgs messageBox = new XtraMessageBoxArgs();
             messageBox.AutoCloseOptions.Delay = 10000;
             messageBox.DefaultButtonIndex = 1;
@@ -146,16 +152,18 @@ namespace ReadDataSerialPort
             {
 
                 mmConfig.Text += "---------Connect--------\r\n";
-                mmConfig.Text += "Name Com: " + namePort + "\r\n";
-                mmConfig.Text += "BaudRate: " + BaudRate + "\r\n";
-                mmConfig.Text += "DataBits: " + DataBits + "\r\n";
-                mmConfig.Text += "Parity: " + cbxParity.Text + "\r\n";
-                mmConfig.Text += "StopBits: " + cbxStopBits.Text + "\r\n";
-                mmConfig.Text += "RtsEnable: " + cbxRtsEnable.Text + "\r\n";
-                mmConfig.Text += "Handshake: " + cbxHandshake.Text + "\r\n";
+                mmConfig.Text += "Name Com: " + mySerialPort.PortName + "\r\n";
+                mmConfig.Text += "BaudRate: " + mySerialPort.BaudRate + "\r\n";
+                mmConfig.Text += "DataBits: " + mySerialPort.DataBits + "\r\n";
+                mmConfig.Text += "Parity: " + mySerialPort.Parity + "\r\n";
+                mmConfig.Text += "StopBits: " + mySerialPort.StopBits + "\r\n";
+                mmConfig.Text += "RtsEnable: " + mySerialPort.RtsEnable + "\r\n";
+                mmConfig.Text += "Handshake: " + mySerialPort.Handshake + "\r\n";
+                mmConfig.Text += "Encoding: " + mySerialPort.Encoding + "\r\n";
                 mySerialPort.DataReceived += new SerialDataReceivedEventHandler(DataReceivedHandler);
                 try
                 {
+                   
                     mySerialPort.Open();
                     if (mySerialPort.IsOpen == true)
                     {
@@ -180,7 +188,7 @@ namespace ReadDataSerialPort
                     messageBox.Text = "Re-check config Com! Error: " + ex;
                     messageBox.Buttons = new DialogResult[] { DialogResult.OK };
                     XtraMessageBox.Show(messageBox);
-                    mmConfig.Text += "---------Stop----------\r\n";
+                    mmConfig.Text += "\r\n---------Stop----------\r\n";
                 }
 
 
@@ -191,26 +199,45 @@ namespace ReadDataSerialPort
             SerialPort sp = (SerialPort)sender;
             //Read Text
             var indata = sp.ReadExisting();
+            //--------------------------
             mmReceived.Invoke(new Action(() => { mmReceived.Text += indata; }));
-            // Read Hex
-            int bytesToRead = sp.BytesToRead;
-            int bytes = sp.BytesToRead;
-            byte[] buffer = new byte[bytes];
-            if (sp.BytesToRead > 1)
-            {
-                sp.Read(buffer, 0, bytes);
-            }
 
-            foreach (byte item in buffer)
-            {
-                mmHex.Invoke(new Action(() => { mmHex.Text += item + " "; }));
-            }
+          //  mmReceived.Invoke(new Action(() => { mmReceived.Text += sp.Read() + " "; }));
+            // Read Hex
+            //int bytesToRead = sp.BytesToRead;
+            //int bytes = sp.BytesToRead;
+            //byte[] buffer = new byte[bytes];
+
+            //if (sp.BytesToRead > 1)
+            //{
+            //    sp.Read(buffer, 0, bytes);
+            //}
+         
+
+            //foreach (byte item in buffer)
+            //{
+            //    mmHex.Invoke(new Action(() => { mmHex.Text += item + " "; }));
+            //}
             //Read byte[] to string
-            byte[] array = new byte[bytesToRead];
-            sp.Read(array, 0, bytesToRead);
-            string res = Utility.ByteArrayToHexString(array);
-            mmByteToString.Invoke(new Action(() => { mmByte.Text += res + "\r\n"; }));
+           // byte[] array = new byte[bytesToRead];
             
+           // sp.Read(array, 0, bytesToRead);
+           // string res = Utility.ByteArrayToHexString(array);
+
+            ////ASCIIEncoding ascii = new ASCIIEncoding();
+            ////int indexOfPi = res.IndexOf('\u03a0');
+            ////int indexOfSigma = res.IndexOf('\u03a3');
+            ////Byte[] encodedBytes = ascii.GetBytes(res);
+            ////String decodedString = ascii.GetString(encodedBytes);         
+            //string res = Encoding.GetEncoding("Windows-1252").GetString(array);
+
+          //  mmByte.Invoke(new Action(() => { mmByte.Text += res; }));
+
+
+            // Byte[] to string
+            //string byteToString = Utility.ByteArrayToString(array);
+            
+           // mmByteToString.Invoke(new Action(() => { mmByteToString.Text += byteToString; }));
 
         }
         private void btnDisconnect_Click(object sender, EventArgs e)
@@ -220,8 +247,8 @@ namespace ReadDataSerialPort
                 btnDisconnect.Enabled = false;
                 btnConnect.Enabled = true;
                 mySerialPort.Close();
-                mmConfig.Text += "---------Stop--------\r\n";
-                mmReceived.Text += "Stop Received data -----------------\r\n";
+                mmConfig.Text += "\r\n---------Stop--------\r\n";
+                mmReceived.Text += "\r\nStop Received data -----------------\r\n";
             }
 
         }
@@ -248,16 +275,12 @@ namespace ReadDataSerialPort
                 string nameFile = sfdgSaveFile.FileName;
                 using (StreamWriter outputFile = new StreamWriter(Path.Combine(nameFile)))
                 {
-                    outputFile.Write("-------------Config----------------------------------------\r\n");
+                    outputFile.Write("\r\n-------------Config----------------------------------------\r\n");
                     outputFile.Write(mmConfig.Text);
-                    outputFile.Write("-------------Text------------------------------------------\r\n");
+                    outputFile.Write("\r\n-------------Text------------------------------------------\r\n");
                     outputFile.Write(mmReceived.Text);
-                    outputFile.Write("-------------Hex-------------------------------------------\r\n");
-                    outputFile.Write(mmHex.Text);
-                    outputFile.Write("-------------Byte []---------------------------------------\r\n");
-                    outputFile.Write(mmByte.Text);
-                    outputFile.Write("-------------Convent byte [] => String---------------------\r\n");
-                    outputFile.Write(mmByteToString.Text);
+                    outputFile.Write("\r\n-------------Hex-------------------------------------------\r\n");
+                   
                 }
             }
         }

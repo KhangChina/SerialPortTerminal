@@ -90,7 +90,7 @@ namespace ReadDataSerialPort
                     textBox2.Text += "MID: " + ketQua + "\r\n"; //2
                     kq = Strings.Mid(txt, 58, 3).Replace("*", "0");
                     ketQua = string.Format("{0:N1}", double.Parse(Strings.RTrim(kq)) / 10.0);
-                    textBox2.Text += "GRAN: " + ketQua + "\r\n"; //3
+                    textBox2.Text += "GRAN%: " + ketQua + "\r\n"; //3
                     kq = Strings.Mid(txt, 61, 3).Replace("*", "0");
                     ketQua = string.Format("{0:N1}", double.Parse(Strings.RTrim(kq)) / 100.0);
                     textBox2.Text += "RBC: " + ketQua + "\r\n"; //4
@@ -134,24 +134,7 @@ namespace ReadDataSerialPort
      
         private void btnConvert_Click(object sender, EventArgs e)
         {
-            BC3000(mmRawData.Text.Replace("?", "*"));
-        }
-
-        private  string ConvertAsciiToUTF8(string inAsciiString)
-        {
-            // Create encoding ASCII.
-            Encoding inAsciiEncoding = Encoding.ASCII;
-            // Create encoding UTF8.
-            Encoding outUTF8Encoding = Encoding.UTF8;
-            // Convert the input string into a byte[].
-            byte [] inAsciiBytes = inAsciiEncoding.GetBytes(inAsciiString);
-            // Conversion string in ASCII encoding to UTF8 encoding byte array.
-            byte [] outUTF8Bytes = Encoding.Convert(inAsciiEncoding, outUTF8Encoding, inAsciiBytes);
-            // Convert the byte array into a char[] and then into a string.
-            char [] inUTF8Chars = new char [outUTF8Encoding.GetCharCount(outUTF8Bytes, 0, outUTF8Bytes.Length)];
-            outUTF8Encoding.GetChars(outUTF8Bytes, 0, outUTF8Bytes.Length, inUTF8Chars, 0);
-            string  outUTF8String = new string (inUTF8Chars);
-            return outUTF8String;
+            BC3000(mmRawData.Text);
         }
     }
 }
